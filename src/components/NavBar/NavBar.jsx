@@ -10,35 +10,29 @@ import {
         MenuDivider, */
     IconButton,
     Flex,
-    Box,
+    Box, 
 } from '@chakra-ui/react'
 import { RxHamburgerMenu } from "react-icons/rx";
 import { BsHandIndexThumb } from "react-icons/bs";
-import Logo from '../../img/henkoLogo.png'
-import './NavBar.css'
+import Logo from '../../img/henkoLogo-Photoroom.png-Photoroom.png'
+import './NavBar.scss'
+import {Link} from 'react-router-dom';
 const Navbar = () => {
     return (
         <Flex justify={'space-between'} align={'center'} className='NavBar'>
             <Box ml={10}>
                 <Menu>
                     <MenuButton
+                        bgColor={'#637074'}
                         as={IconButton}
                         aria-label='Options'
                         icon={<RxHamburgerMenu />}
                         variant='outline' />
                     <MenuList color={'#242424'}>
-                        <MenuItem icon={<BsHandIndexThumb />}>
-                            Inicio
-                        </MenuItem>
-                        <MenuItem icon={<BsHandIndexThumb />}>
-                            Remeras Y Musculosas
-                        </MenuItem>
-                        <MenuItem icon={<BsHandIndexThumb />}>
-                            Pantalones Y Bermudas
-                        </MenuItem>
-                        <MenuItem icon={<BsHandIndexThumb />}>
-                            Buzos
-                        </MenuItem>
+                        <MenuItem ><Link to='/'>Inicio</Link></MenuItem>
+                        <MenuItem ><Link to='/categoria/Remeras'> Remeras </Link></MenuItem>
+                        <MenuItem ><Link to='/categoria/Buzos'> Buzos </Link></MenuItem>
+                        <MenuItem ><Link to='/categoria/Pantalones'> Pantalones </Link></MenuItem>
                     </MenuList>
                 </Menu>
             </Box>
