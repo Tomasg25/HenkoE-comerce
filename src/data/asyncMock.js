@@ -44,7 +44,8 @@ export const productos = [
         descripcion: "Buzo Overzize Blanco estampado",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNmLMO7cQd24n8Bs7urGA2A1CEJBMlqP-vxA&s",
     },
-/*    {
+/*  plantilla de objeto  
+    {
         id: 6,
         nombre: "",
         precio: ,
