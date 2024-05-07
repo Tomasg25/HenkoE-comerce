@@ -20,7 +20,7 @@ const ItemListConteiner = ({ title }) => {
             query(coleccion, where('categoria', '==', categoryId))
 
             const respuesta = await getDocs(queryRef)
-
+            console.log(respuesta)
             const productos = respuesta.docs.map((doc)=>{
                 const newItem = {
                     ...doc.data(),

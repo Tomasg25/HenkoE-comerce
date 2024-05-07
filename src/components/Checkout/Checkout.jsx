@@ -65,7 +65,7 @@ const getOrden = async () =>{
   console.log(emailMatch)
 
   if(isFormValid && emailMatch){
-    const coleccionNewOrden = collection(db,'ordenesz')
+    const coleccionNewOrden = collection(db,'ordenes')
     try {
       for(const item of cart){
         const productRef = doc(db, 'productos', item.id)
