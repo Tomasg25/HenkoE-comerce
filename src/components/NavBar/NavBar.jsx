@@ -1,19 +1,6 @@
 import CardWidget from '../CardWidget/Cardwidget'
-import {
-    Menu,
-    MenuButton,
-    MenuList,
-    MenuItem,
-    /*     MenuItemOption,
-        MenuGroup,
-        MenuOptionGroup,
-        MenuDivider, */
-    IconButton,
-    Flex,
-    Box, 
-} from '@chakra-ui/react'
+import {Menu, MenuButton, MenuList, MenuItem, IconButton, Flex, Box,} from '@chakra-ui/react'
 import { RxHamburgerMenu } from "react-icons/rx";
-import { BsHandIndexThumb } from "react-icons/bs";
 import Logo from '../../img/henkoLogo-Photoroom.png-Photoroom.png'
 import './NavBar.scss'
 import {Link} from 'react-router-dom';
@@ -36,8 +23,9 @@ const Navbar = () => {
                     </MenuList>
                 </Menu>
             </Box>
-            <img src={Logo} className='Logo' />
-            <CardWidget />
+            <Link to='/'><img src={Logo} className='Logo' /></Link>
+            
+            <Link to='/Carrito'><CardWidget /></Link>
         </Flex>
     )
 }

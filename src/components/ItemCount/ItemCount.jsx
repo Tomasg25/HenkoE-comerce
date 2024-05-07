@@ -6,10 +6,10 @@ const ItemCount = ({initialValue, stock, onAdd}) => {
 
     return (
         <Flex>
-            <Button onClick={restar}>-</Button>
+            <Button marginRight='2' bgColor='#637074' onClick={restar}>-</Button>
             <Heading>{contador}</Heading>
-            <Button onClick={sumar}>+</Button>
-            <Button onClick={()=>onAdd(contador)}>Agregar al Carrito</Button>
+            <Button marginLeft='2'  bgColor='#637074' onClick={sumar}>+</Button>
+            <Button marginLeft='2' bgColor='#637074' onClick={()=>onAdd(contador)}>Agregar al Carrito</Button>
         </Flex>
   )
 }

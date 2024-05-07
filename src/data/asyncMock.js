@@ -40,7 +40,7 @@ export const productos = [
         nombre: "Buzo Shato",
         precio: 23000,
         categoria: "Buzos",
-        stock: "6",
+        stock: "0",
         descripcion: "Buzo Overzize Blanco estampado",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNmLMO7cQd24n8Bs7urGA2A1CEJBMlqP-vxA&s",
     },

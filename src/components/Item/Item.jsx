@@ -1,6 +1,8 @@
 import { Card, CardBody, CardFooter, Image, Stack, Heading, Text, Divider, ButtonGroup, Button} from '@chakra-ui/react'
 import './Item.scss'
 import {Link} from 'react-router-dom'
+import { useState } from 'react'
+import { ClimbingBoxLoader } from 'react-spinners'
 
 const Item = ({ nombre, precio, img, descripcion, id , stock}) => {
     return (
@@ -23,14 +25,7 @@ const Item = ({ nombre, precio, img, descripcion, id , stock}) => {
             <CardFooter>
                 <ButtonGroup spacing='2'>
                     <Button variant='solid' bgColor='#637074'>
-                        <Link to={`/producto/${id}`}>
-                            Ver Producto
-                        </Link>
-                    </Button>
-
-
-                    <Button variant='ghost' bgColor='#637074'>
-                        Agregar al carrito
+                        <Link to={`/producto/${id}`}>Ver producto</Link>
                     </Button>
                 </ButtonGroup>
             </CardFooter>

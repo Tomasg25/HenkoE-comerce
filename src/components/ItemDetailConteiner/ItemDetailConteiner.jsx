@@ -1,21 +1,46 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { getProductsById } from '../../data/asyncMock'
+import { useNavigate, useParams } from 'react-router-dom'
 import ItemDetail from '../ItemDetail/ItemDetail'
+import { Box, Flex } from '@chakra-ui/react'
+import { RotateLoader } from "react-spinners"
+import { doc, getDoc } from 'firebase/firestore'
+import { db } from '../../config/firebase'
 
 export const ItemDetailConteiner = () => {
   const [producto , setProducto] = useState({})
-  
   const { productoId } = useParams()
+  const [cargando, setCarga] = useState(true)
+
+  const navigate = useNavigate()
   
   useEffect(() => {
-    getProductsById(productoId)
-      .then((elemento) => setProducto(elemento))
-      .catch((error) => console.log(error))
+    const getProduct = async() =>{
+      const queryRef = doc(db ,'productos', productoId)
+      const respuesta = await getDoc(queryRef)
+      const newItem = {
+        ...respuesta.data(),
+        id: respuesta.id
+      }
+      setProducto(newItem)
+      setCarga(false)
+    }
+    getProduct()
   },[productoId])
   return (
-    <div>
-      <ItemDetail {...producto}/>
-    </div>
+    <Box 
+      w={'60%'}
+      minHeight={'40vh'}
+      margin={'0 auto'}
+      mt={'10'}
+      borderRadius={'10px'}>
+      {
+        cargando ?
+        <Flex justify={'center'} align={'center'} h={'50vh'}>
+            <RotateLoader color="#637074" />
+        </Flex>
+        :
+        <ItemDetail {...producto}/>
+      }
+    </Box>
   )
 }
