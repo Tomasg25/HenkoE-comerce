@@ -1,27 +1,22 @@
 /* eslint-disable react/jsx-key */
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import Context from '../../Context/CartContext'
 import {
     Table,
     Thead,
     Tbody,
-    Tfoot,
     Tr,
     Th,
     Td,
-    TableCaption,
     TableContainer,
     Button,
     Flex,
     Heading,
-    Divider,
     Center,
     Text,
 } from '@chakra-ui/react'
 import { TbGardenCartOff } from "react-icons/tb"
 import { RiDeleteBin5Fill } from "react-icons/ri"
-import { IoIosArrowBack } from "react-icons/io"
-import { IoIosArrowForward } from "react-icons/io"
 import { Link } from 'react-router-dom'
 import { FiChevronsLeft, FiChevronsRight } from "react-icons/fi"
 
@@ -32,9 +27,9 @@ const Cart = () => {
 if(cart.length === 0){
     return(
         <Flex direction={'column'} justify={'center'} align={'center'} mt={10}>
-            <Heading>Todavia no agregaste ningun producto</Heading>
+            <Heading color={'#B3BFB8'}>Todavia no agregaste ningun producto</Heading>
             <Link to={'/'}>
-                <Button color="#637074" mt={5}>
+                <Button bgColor="#7E8D85" color={'#3C493F'} mt={5}>
                     <FiChevronsLeft />Ver productos<FiChevronsRight />
                 </Button>
             </Link>
@@ -43,29 +38,29 @@ if(cart.length === 0){
 }
     return (
         <TableContainer w={'80%'} m={'0 auto'} mt={10}>
-            <Table variant='striped' /*colorScheme='teal'*/> 
+            <Table variant='striped'> 
                 <Thead>
-                    <Tr>
-                        <Th fontSize={'1 rem'} color={'#898989'}>Producto</Th>
-                        <Th fontSize={'1 rem'} color={'#898989'}>precio</Th>
-                        <Th fontSize={'1 rem'} color={'#898989'}>cantidad</Th>
-                        <Th fontSize={'1 rem'} color={'#898989'}>Subtotal</Th>
-                        <Th fontSize={'1 rem'} color={'#898989'}></Th>
+                    <Tr bgColor={'#7E8D85'}>
+                        <Th fontSize={'1 rem'} color={'#3C493F'}>Producto</Th>
+                        <Th fontSize={'1 rem'} color={'#3C493F'}>precio</Th>
+                        <Th fontSize={'1 rem'} color={'#3C493F'}>cantidad</Th>
+                        <Th fontSize={'1 rem'} color={'#3C493F'}>Subtotal</Th>
+                        <Th fontSize={'1 rem'} color={'#3C493F'}></Th>
                     </Tr>
                 </Thead>
                 <Tbody>
                     {   
-                        cart.map((el, index)=>(                        
-                            <Tr key={el.id} ey={el.id} bg={index % 2 === 0 ? '#c5d0d3' : '#898989'} color={index % 2 === 0 ? '#898989' : '#fff'}>
-                                <Td border={'none'}>{el.nombre}</Td>
-                                <Td border={'none'}>${el.precio}</Td>
-                                <Td border={'none'}>{el.cantidad}</Td>
-                                <Td border={'none'}>${el.precio * el.cantidad}</Td>
+                        cart.map((el)=>(                        
+                            <Tr key={el.id} ey={el.id} fontWeight={'bolder'}>
+                                <Td border={'none'} color={'#3C493F'}>{el.nombre}</Td>
+                                <Td border={'none'} color={'#3C493F'}>${el.precio}</Td>
+                                <Td border={'none'} color={'#3C493F'}>{el.cantidad}</Td>
+                                <Td border={'none'} color={'#3C493F'}>${el.precio * el.cantidad}</Td>
                                 <Td border={'none'}>
-                                    <Button bg={'transparent'} fontSize={'1.5rem'} color={index % 2 === 0 ? '#416d6d' : '#fff'} 
+                                    <Button bg={'transparent'} fontSize={'1.5rem'} color={'#3C493F'} 
                                     _hover={{
-                                        backgroundColor: index % 2 === 0 ? '#898989' : '#c5d0d3',
-                                        color: index % 2 === 0 ? '#c5d0d3' : '#898989',
+                                        backgroundColor:'#7E8D85',
+                                        color: '#3C493F',
                                         }}
                                         onClick={() => eliminarItem(el.id)}>
                                         <RiDeleteBin5Fill color="#637074" size={30} />
@@ -78,16 +73,17 @@ if(cart.length === 0){
             </Table>
             <Center mt={10}>
                 <Flex w={'60%'} justify={'space-around'} align={'center'}>
-                    <Text fontSize={'3xl'} color={'#898989'} w={'15rem'} height={'3rem'}>Total: ${precioTotal()}</Text>
+                    <Text fontSize={'3xl'} color={'#B3BFB8'} w={'15rem'} height={'3rem'}>Total: ${precioTotal()}</Text>
                     <Button onClick={() => clearCart()}
-                        w={'15rem'}
-                        height={'3rem'}
-                        backgroundColor={'#637074'}
-                        color={'#fff'}
+                        w={'10rem'}
+                        height={'2rem'}
+                        m={4}
+                        backgroundColor={'#B3BFB8'}
+                        color={'#3C493F'}
                         fontSize={'xl'}
                         _hover={{
-                            backgroundColor: '#c5d0d3',
-                            color: '#fff',
+                            backgroundColor: '#7E8D85',
+                            color: '#B3BFB8',
                         }}
                     >
                         <span className='iconClearCart'>
@@ -95,7 +91,7 @@ if(cart.length === 0){
                         </span>
                         Vaciar carrito
                     </Button>
-                    <Link to='/Checkout'>
+                    <Link to='/Checkout' color='#B3BFB8'>
                         Finalizar compra
                     </Link>
                 </Flex>

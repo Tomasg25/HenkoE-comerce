@@ -6,10 +6,10 @@ const ItemCount = ({initialValue, stock, onAdd}) => {
 
     return (
         <Flex>
-            <Button marginRight='2' bgColor='#637074' onClick={restar}>-</Button>
+            <Button bg="#3C493F" fontSize={'2xl'} _hover={{ bg: '#7E8D85' }} marginLeft='2' onClick={restar}>-</Button>
             <Heading>{contador}</Heading>
-            <Button marginLeft='2'  bgColor='#637074' onClick={sumar}>+</Button>
-            <Button marginLeft='2' bgColor='#637074' onClick={()=>onAdd(contador)}>Agregar al Carrito</Button>
+            <Button bg="#3C493F" fontSize={'2xl'} _hover={{ bg: '#7E8D85' }} marginLeft='2' onClick={sumar}>+</Button>
+            <Button bg="#3C493F" fontSize={'2xl'} _hover={{ bg: '#7E8D85' }} marginLeft='2' onClick={()=>onAdd(contador)}>Agregar al Carrito</Button>
         </Flex>
   )
 }

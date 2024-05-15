@@ -7,7 +7,7 @@ const CardWidget = () => {
   const { cantidadTotal } = useContext(Context)
   return (
     <Flex mr={10}>
-      <PiShoppingCartFill color="#637074" size={40}/>
+      <PiShoppingCartFill color="#3C493F" size={40}/>
       <Flex justify={'center'} align={'center'} h={'50%'} w={'50%'}>
         <Badge borderRadius={'50%'} color={'mm'} fontSize={'md'}>{cantidadTotal()}</Badge>
       </Flex>

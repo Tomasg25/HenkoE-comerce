@@ -43,7 +43,7 @@ export const ContextProvider = ({children}) => {
         const total = cart.reduce((acc,el)=> acc + el.cantidad, 0)
         return total
     }
-  return (
+return (
     <Context.Provider
         value={{
             cart,
@@ -56,7 +56,7 @@ export const ContextProvider = ({children}) => {
         >
         {children}
     </Context.Provider>
-  )
+)
 }
 
 export default Context

@@ -1,10 +1,10 @@
-import { Box, Center, Flex, Heading } from "@chakra-ui/react"
+import { Box, Flex, Heading } from "@chakra-ui/react"
 import { useEffect, useState} from "react"
 import ItemList from "../ItemList/ItemList"
 import { useParams } from "react-router-dom"
 import { RotateLoader }from "react-spinners"
 import { db } from "../../config/firebase"
-import { collection, getDoc, getDocs, query, where } from "firebase/firestore"
+import { collection, getDocs, query, where } from "firebase/firestore"
 
 const ItemListConteiner = ({ title }) => {
     const [products,setProducts] = useState([])
@@ -40,7 +40,7 @@ const ItemListConteiner = ({ title }) => {
             {
                 cargando?
                 <Flex justify={'center'} align={'center'} h={'50vh'}>
-                    <RotateLoader color="#637074"/>
+                        <RotateLoader color="#B3BFB8"/>
                 </Flex>
                 :
                 <ItemList products={products}/>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { Box, Flex } from '@chakra-ui/react'
 import { RotateLoader } from "react-spinners"
@@ -10,8 +10,6 @@ export const ItemDetailConteiner = () => {
   const [producto , setProducto] = useState({})
   const { productoId } = useParams()
   const [cargando, setCarga] = useState(true)
-
-  const navigate = useNavigate()
   
   useEffect(() => {
     const getProduct = async() =>{
@@ -36,10 +34,10 @@ export const ItemDetailConteiner = () => {
       {
         cargando ?
         <Flex justify={'center'} align={'center'} h={'50vh'}>
-            <RotateLoader color="#637074" />
+            <RotateLoader color="#B3BFB8" />
         </Flex>
         :
-        <ItemDetail {...producto}/>
+          <ItemDetail {...producto}/>
       }
     </Box>
   )

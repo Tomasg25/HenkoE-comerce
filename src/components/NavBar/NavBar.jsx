@@ -4,13 +4,14 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import Logo from '../../img/henkoLogo-Photoroom.png-Photoroom.png'
 import './NavBar.scss'
 import {Link} from 'react-router-dom';
+
 const Navbar = () => {
     return (
         <Flex justify={'space-between'} align={'center'} className='NavBar'>
             <Box ml={10}>
                 <Menu>
                     <MenuButton
-                        bgColor={'#637074'}
+                        bgColor={'#3C493F'}
                         as={IconButton}
                         aria-label='Options'
                         icon={<RxHamburgerMenu />}

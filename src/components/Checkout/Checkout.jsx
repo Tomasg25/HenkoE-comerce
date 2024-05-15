@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import {
   FormControl,
   Input,
@@ -6,7 +6,7 @@ import {
   Heading,
   Button,
 } from '@chakra-ui/react'
-import { addDoc, collection, doc, getDoc, updateDoc } from 'firebase/firestore'
+import { Timestamp, addDoc, collection, doc, getDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../../config/firebase'
 import Context from '../../Context/CartContext'
 import Swal from 'sweetalert2'
@@ -21,6 +21,7 @@ const Checkout = () => {
   })
   const [emailMatch, setEmailMatch] = useState(true)
   const [error, setError] = useState({})
+  console.log(error)
 
   const {cart, precioTotal, clearCart} = useContext(Context)
 
@@ -46,6 +47,7 @@ const validateEmailMatch = () =>{
     if (!user.nombre) {
       errors.nombre = "Tenés que agregar un nombre"
     }
+
     if (user.telefono.length < 10 || user.telefono.length > 14){
       errors.telefono = "ingrese un numero valido"
       
@@ -56,19 +58,15 @@ const validateEmailMatch = () =>{
     setError(errors)
     return Object.keys(errors).length === 0
   }
-  console.log('ERROR',error)
 
 const getOrden = async () =>{
   const isFormValid = validateForm()
   validateEmailMatch()
-  console.log(isFormValid)
-  console.log(emailMatch)
-
   if(isFormValid && emailMatch){
     const coleccionNewOrden = collection(db,'ordenes')
     try {
       for(const item of cart){
-        const productRef = doc(db, 'productos', item.id)
+        const productRef = doc(db, 'productos', item.id) 
         const productDoc = await getDoc(productRef)
 
         const stockActual = productDoc.data().stock
@@ -82,24 +80,40 @@ const getOrden = async () =>{
           const newOrden = {
             Cliente: user,
             producto:cart,
-            Total: precioTotal()
+            Total: precioTotal(),
+            fechaDeCompra: Timestamp.now()
           }
 
           const orderDocRef = await addDoc(coleccionNewOrden,newOrden)
           console.log(coleccionNewOrden)
-          Swal.fire({
-            title: 'Gracias por tu compra!!',
-            text: `El numero de su compra es ${orderDocRef.id}` ,
-            icon: 'success',
-            confirmButtonText: 'Confirmar'
-          }).then(()=>{
-            clearCart()
-            navigate('/')
-          })
+
+            Swal.fire({
+              title: 'Gracias por tu compra!!',
+              text: `El numero de su compra es ${orderDocRef.id}` ,
+              icon: 'success',
+              confirmButtonText: 'Confirmar',
+              color: "#3C493F",
+              background: "#B3BFB8",
+            }).then(()=>{
+              clearCart()
+              navigate('/')
+            })
+          
       }
     } catch (error) {
     console.log(error)
     }
+  } else{
+    console.log('ERRsdaOR', error)
+    Swal.fire({
+      title: "Complete los campos de manera correcta!!",
+      icon: 'error',
+      width: 600,
+      padding: "3em",
+      color: "#3C493F",
+      background: "#B3BFB8",
+
+    });
   }
 }
 
@@ -111,7 +125,7 @@ const getOrden = async () =>{
 
   return (
     <Flex direction={'column'} justify={'center'} align={'center'} >
-      <Heading mb={2}>Datos de facturación</Heading>
+      <Heading mb={2} color={'#B3BFB8'}>Datos de facturación</Heading>
       <FormControl w={'40%'} mt={'10'}>
         <Input type='text' name='nombre' placeholder='Ingrese el Nombre' mb={3} onChange={updateUser}/>
         <Input type='email' name='email' placeholder='Ingrese el Email' mb={3} onChange={updateUser}/>
@@ -119,7 +133,13 @@ const getOrden = async () =>{
         <Input type='text' name='telefono' placeholder='ingrese el Telefono' mb={3} onChange={updateUser}/>
       </FormControl>
       <Flex w={'100%'} justify={'center'} align={'center'}>
-        <Button onClick={getOrden}>Finalizar compra</Button>
+        <Button onClick={getOrden} backgroundColor={'#B3BFB8'}
+          color={'#3C493F'}
+          fontSize={'xl'}
+          _hover={{
+            backgroundColor: '#7E8D85',
+            color: '#B3BFB8',
+          }}>Finalizar compra</Button>
       </Flex>
     </Flex>
   )
