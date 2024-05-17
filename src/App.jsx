@@ -8,6 +8,7 @@ import PageNotFound from './components/PageNotFound/PageNotFound'
 import { ContextProvider } from './Context/CartContext'
 import Cart from './components/Cart/Cart'
 import Checkout from './components/Checkout/Checkout'
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
 
@@ -25,9 +26,9 @@ function App() {
             <Route path='/Checkout' element={<Checkout/>}/>
           </Routes>
         </BrowserRouter>
+        <Analytics/>
       </ContextProvider>
     </ChakraProvider>
-
 
   )
 }

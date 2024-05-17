@@ -1,5 +1,4 @@
 import { createContext, useState } from 'react'
-
 const Context = createContext()
 
 export const ContextProvider = ({children}) => {
