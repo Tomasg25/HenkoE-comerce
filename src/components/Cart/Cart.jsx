@@ -125,7 +125,7 @@ const Cart = () => {
                                 </Link>
                             </GridItem>
                             <GridItem area={'delAll'} justifySelf={'left'} pl={20}>
-                                <Button
+                                <Button onClick={() => clearCart()}
                                     backgroundColor={'#B3BFB8'}
                                     color={'#3C493F'}
                                     fontSize={'xl'}
@@ -225,7 +225,7 @@ const Cart = () => {
                                     </Link>
                                 </GridItem>
                                 <GridItem area={'delAll'} justifySelf={'left'} pl={6}>
-                                    <Button
+                                <Button onClick={() => clearCart()}
                                         backgroundColor={'#B3BFB8'}
                                         color={'#3C493F'}
                                         fontSize={'xl'}
