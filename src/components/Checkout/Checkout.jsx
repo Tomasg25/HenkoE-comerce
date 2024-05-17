@@ -21,7 +21,7 @@ const Checkout = () => {
   })
   const [emailMatch, setEmailMatch] = useState(true)
   const [error, setError] = useState({})
-  console.log(error)
+  const errorMessage = Object.values(error).map(err => `• ${err}`);
 
   const {cart, precioTotal, clearCart} = useContext(Context)
 
@@ -85,8 +85,6 @@ const getOrden = async () =>{
           }
 
           const orderDocRef = await addDoc(coleccionNewOrden,newOrden)
-          console.log(coleccionNewOrden)
-
             Swal.fire({
               title: 'Gracias por tu compra!!',
               text: `El numero de su compra es ${orderDocRef.id}` ,
@@ -104,15 +102,14 @@ const getOrden = async () =>{
     console.log(error)
     }
   } else{
-    console.log('ERRsdaOR', error)
     Swal.fire({
       title: "Complete los campos de manera correcta!!",
+      text: errorMessage,
       icon: 'error',
       width: 600,
       padding: "3em",
       color: "#3C493F",
       background: "#B3BFB8",
-
     });
   }
 }

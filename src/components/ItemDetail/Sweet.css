@@ -1,0 +1,27 @@
+.my-swal-popup {
+    background: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+.swal2-popup {
+    padding: 0 !important;
+}
+
+.my-swal-icon .swal2-success {
+    margin: 0 !important;
+}
+
+.my-swal-icon .swal2-success-ring {
+    display: none !important;
+}
+
+.swal2-icon.swal2-success {
+    font-size: 1rem !important;
+    /* Ajusta el tamaño del icono */
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -398%);
+    /* Ajusta este valor para afinar la posición */
+}
